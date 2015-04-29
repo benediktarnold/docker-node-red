@@ -3,6 +3,7 @@ FROM google/nodejs
 RUN npm install -g node-red
 
 RUN npm install -g node-red-contrib-owfs
+RUN npm install -g node-red-contrib-homematic node-red-contrib-fritzbox node-red-contrib-elasticsearch
 
 RUN mkdir /node-red
 
