@@ -13,4 +13,4 @@ Other npm modules
 Example usage
 =============
 
-	docker run -p 1880:1880 <image>
+	docker run -p 1880:1880 benediktarnold/node-red
