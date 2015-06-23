@@ -9,6 +9,7 @@ RUN unzip node-red-0.10.10.zip && \
 WORKDIR /opt/node-red-0.10.10
 
 RUN npm install node-red-contrib-owfs node-red-contrib-elasticsearch sonos
+ADD settings.js /opt/node-red-0.10.10/settings.js
 
 RUN mkdir /node-red
 
