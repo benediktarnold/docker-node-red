@@ -2,9 +2,8 @@ FROM node:4
 
 RUN groupadd -r red && useradd -m -r -g red red
 RUN chown -R red $(npm config get prefix)/*
-RUN mkdir /node-red && chown red:red /node-red
 USER red
-RUN npm install -g node-red && mkdir -p /home/red/.node-red
+RUN npm install -g node-red && mkdir -p /home/red/.node-red && mkdir -p /home/red/.node-red-contrib-hangouts
 
 WORKDIR /home/red/.node-red
 
