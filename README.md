@@ -5,6 +5,7 @@ Installed nodes
 ---------------
 * node-red-contrib-owfs 
 * node-red-contrib-elasticsearch 
+* node-red-contrib-hangouts
 
 Other npm modules
 -----------------
