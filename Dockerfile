@@ -1,25 +1,25 @@
 FROM node:4
 
-WORKDIR /opt
-ADD https://github.com/node-red/node-red/releases/download/0.13.4/node-red-0.13.4.zip /opt/node-red-0.13.4.zip
-RUN apt-get update && apt-get install unzip -y
-RUN unzip node-red-0.13.4.zip && \
-  mv node-red-0.13.4 node-red && \
-	cd node-red && \
-	npm install --production
-WORKDIR /opt/node-red
+RUN groupadd -r red && useradd -m -r -g red red
+RUN chown -R red $(npm config get prefix)/*
+RUN mkdir /node-red && chown red:red /node-red
+USER red
+RUN npm install -g node-red && mkdir -p /home/red/.node-red
+
+WORKDIR /home/red/.node-red
+
+RUN ls -la /home/red
 
 RUN npm install node-red-contrib-owfs node-red-contrib-elasticsearch node-red-contrib-hangouts sonos
-ADD settings.js /opt/node-red/settings.js
-
-RUN mkdir /node-red
+ADD settings.js /home/red/.node-red/settings.js
 
 # expose port
 EXPOSE 1880
-VOLUME /node-red
+VOLUME /home/red/.node-red
+VOLUME /home/red/.node-red-contrib-hangouts
+
 
 
 # Set the default command to execute
 # when creating a new container
-ENTRYPOINT ["node"]
-CMD ["red.js","-u", "/node-red", "-s", "/opt/node-red/settings.js"]
+CMD ["node-red"]
