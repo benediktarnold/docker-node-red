@@ -144,7 +144,7 @@ module.exports = {
     //    context.global.os
 
     functionGlobalContext: {
-         sonos:require('sonos'),
+         sonos:require('sonos')
         // bonescript:require('bonescript'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})
